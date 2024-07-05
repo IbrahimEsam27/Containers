@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  web-fe:
+    build: .
+    command: python app.py
+    ports:
+      - target: 5000
+        published: 5000
+    networks:
+      - frontend-net
+      - backend-net
+    volumes:
+      - type: volume
+        source: counter-vol
+        target: /code
+  redis:
+    image: "redis:alpine"
+    networks:
+      backend-net:
+
+networks:
+  frontend-net:
+  backend-net:
+    internal: true
+
+volumes:
+  counter-vol:

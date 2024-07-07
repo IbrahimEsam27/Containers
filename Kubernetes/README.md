@@ -1,5 +1,23 @@
 # Kubernetes
 **Container orchestration service (platform)**
+
+- [Kubernetes](#kubernetes)
+  - [High Level Architecture of Kubernetes](#high-level-architecture-of-kubernetes)
+  - [Installation](#installation)
+    - [Install Minikube](#install-minikube)
+  - [Architecture of Kubernetes](#architecture-of-kubernetes)
+    - [Differences between Containers (Orchestration native like docke swarm) and Kubernetes](#differences-between-containers-orchestration-native-like-docke-swarm-and-kubernetes)
+  - [Sample Deployment](#sample-deployment)
+  - [Steps](#steps)
+    - [1- Create Deployment](#1--create-deployment)
+  - [](#)
+    - [2- Create Service](#2--create-service)
+    - [3- Deployment Scaling](#3--deployment-scaling)
+    - [4- Update](#4--update)
+  - [Minikube Dashboard](#minikube-dashboard)
+
+
+
 ## High Level Architecture of Kubernetes
 *We have (**manager**) nodes and (**worker**) nodes*
 

@@ -1,0 +1,56 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: kubernetes-bootcamp
+  namespace: default
+
+  labels:
+    app: kubernetes-bootcamp
+  annotations:
+    deployment.kubernetes.io/revision: '2'
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: kubernetes-bootcamp
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: kubernetes-bootcamp
+    spec:
+      containers:
+        - name: kubernetes-bootcamp
+          image: jocatalin/kubernetes-bootcamp:v2
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 3
+  replicas: 4
+  updatedReplicas: 4
+  readyReplicas: 4
+  availableReplicas: 4
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2024-07-06T05:38:09Z'
+      lastTransitionTime: '2024-07-06T05:38:09Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2024-07-06T06:10:13Z'
+      lastTransitionTime: '2024-07-06T04:19:52Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "kubernetes-bootcamp-5475b47cd4" has successfully progressed.
